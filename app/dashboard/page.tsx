@@ -1,10 +1,13 @@
 import OverviewCard from "@/components/OverviewCard";
 import CounterCard from "@/components/CounterCard";
+import SearchBar from "@/components/SearchBar";
 
 export default function DashboardPage() {
     return (
         <div className="p-6">
             <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+
+            <SearchBar />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <OverviewCard title="Total Users" value="1,204" delta="+8%" />
@@ -14,10 +17,11 @@ export default function DashboardPage() {
             </div>
         
 
-            <div className="grid drig-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <CounterCard label="New Signups" defaultValue={10} />
                 <CounterCard label="Errors Logged" defaultValue={1} />
             </div>
+
         </div>
     );
 }
