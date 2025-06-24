@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Admin Dashboard
+
+A basic admin dashboard built with Next.js App Router and Tailwind CSS. This project is part of a personal learning curriculum focused on JavaScript, component design, and frontend layout.
+
+---
+
+## Features
+
+- App Router structure
+- Tailwind CSS styling
+- Reusable components (Sidebar, Header, OverviewCard)
+- Static dashboard with mock data
+- JavaScript learning integrated into project
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+/app
+  /dashboard      → Home page layout
+  layout.tsx      → Page wrapper with header/sidebar
 
-## Learn More
+/components
+  Sidebar.tsx
+  Header.tsx
+  OverviewCard.tsx
 
-To learn more about Next.js, take a look at the following resources:
+globals.css       → Tailwind setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Preview
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![screenshot][./nextjs-admin-tailwind.png]
