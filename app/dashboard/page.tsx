@@ -1,4 +1,5 @@
 import OverviewCard from "@/components/OverviewCard";
+import CounterCard from "@/components/CounterCard";
 
 export default function DashboardPage() {
     return (
@@ -10,6 +11,12 @@ export default function DashboardPage() {
                 <OverviewCard title="Active Sessions" value="238" delta="-2%" />
                 <OverviewCard title="Revenue" value="$12.4k" delta="+15%" />
                 <OverviewCard title="Growth" value="12%" delta="+3%" />                
+            </div>
+        
+
+            <div className="grid drig-cols-1 sm:grid-cols-2 gap-4">
+                <CounterCard label="New Signups" defaultValue={10} />
+                <CounterCard label="Errors Logged" defaultValue={1} />
             </div>
         </div>
     );
