@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "../components/Sidebar"
 import Header from "../components/Header"
+import Link from 'next/link';
+import { ThemeProvider } from "@/components/ThemeContext";
+import DarkModeToggle from "@/components/DarkModeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,20 +29,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body
-        className="h-full bg-gray-50 text-gray-900 antialiased"
-      >
-        <div className="flex h-screen">
-          <Sidebar /> {/* Sidebar on the left*/}
-
-          <div className="flex-1 flex flex-col">
-            <Header /> {/* Header at the top */}
-            <main className="flex-1 p-6 bg-gray-100">
-              {children}
-              </main> {/* Page content */}
-          </div>
-        </div>
+      <body>
+        <ThemeProvider>
+          <nav className="bg=gray-800 text-white p-4 flex gap-4">
+            <NavLink href="/" label="Home" />
+            <NavLink href="/dashboard" label="Dashboard" />
+            <NavLink href="/reports" label="Reports" />
+            <NavLink href="/settings" label="Settings" />
+            <DarkModeToggle />
+          </nav>
+          <main className="flex-1 p-6 bg-gray-100">
+            {children}
+          </main> {/* Page content */}
+        </ThemeProvider> 
       </body>
     </html>
   );
+}
+
+function NavLink({ href, label }: { href: string, label: string}) {
+  const path = typeof window !== 'undefined' ? window.location.pathname : '';
+  const isActive = path === href;
+  return (
+    <Link href={href} className={`hover:underline ${isActive ? 'text-blue-400' : ''}`}>
+      {label}
+    </Link>
+  )
 }
