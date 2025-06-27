@@ -6,6 +6,7 @@ import Header from "../components/Header"
 import Link from 'next/link';
 import { ThemeProvider } from "@/components/ThemeContext";
 import DarkModeToggle from "@/components/DarkModeToggle";
+import { Providers } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,20 +29,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full" suppressHydrationWarning>
       <body>
-        <ThemeProvider>
-          <nav className="bg=gray-800 text-white p-4 flex gap-4">
+        <Providers>
+          <nav className="bg-gray-800 text-white p-4 flex gap-4">
             <NavLink href="/" label="Home" />
             <NavLink href="/dashboard" label="Dashboard" />
             <NavLink href="/reports" label="Reports" />
             <NavLink href="/settings" label="Settings" />
             <DarkModeToggle />
           </nav>
-          <main className="flex-1 p-6 bg-gray-100">
+          <main className="flex-1 p-6 bg-gray-100 text-black dark:bg-gray-900 dark:text-white">
             {children}
           </main> {/* Page content */}
-        </ThemeProvider> 
+        </Providers> 
       </body>
     </html>
   );

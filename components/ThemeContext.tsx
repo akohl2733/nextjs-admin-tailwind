@@ -19,6 +19,7 @@ export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
         } else {
             root.classList.remove('dark');
         }
+        console.log("The theme is now:", theme)
     }, [theme]);
 
     const toggleTheme = () => {
