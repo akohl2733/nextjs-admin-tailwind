@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* @import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+body {
+  @apply bg-white text-black dark:bg-gray-900 dark:text-white;
+  font-family: Arial, Helvetica, sans-serif;
+} */

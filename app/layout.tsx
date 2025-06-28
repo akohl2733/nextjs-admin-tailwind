@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "../components/Sidebar"
-import Header from "../components/Header"
 import Link from 'next/link';
 import { ThemeProvider } from "@/components/ThemeContext";
 import DarkModeToggle from "@/components/DarkModeToggle";
@@ -29,20 +27,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
-      <body>
-        <Providers>
-          <nav className="bg-gray-800 text-white p-4 flex gap-4">
-            <NavLink href="/" label="Home" />
-            <NavLink href="/dashboard" label="Dashboard" />
-            <NavLink href="/reports" label="Reports" />
-            <NavLink href="/settings" label="Settings" />
-            <DarkModeToggle />
-          </nav>
-          <main className="flex-1 p-6 bg-gray-100 text-black dark:bg-gray-900 dark:text-white">
-            {children}
-          </main> {/* Page content */}
-        </Providers> 
+    <html lang='en' className='h-full' suppressHydrationWarning>
+      <body className='bg-white text-black darl:bg-gray-900 dark:text-white'>
+        <ThemeProvider>
+            <Providers>
+              <nav className="bg-gray-800 text-white p-4 flex gap-4">
+                <NavLink href="/" label="Home" />
+                <NavLink href="/dashboard" label="Dashboard" />
+                <NavLink href="/reports" label="Reports" />
+                <NavLink href="/settings" label="Settings" />
+                <DarkModeToggle />
+              </nav>
+              <main className="flex-1 p-6 bg-gray-100 text-black dark:bg-gray-900 dark:text-white">
+                {children}
+              </main> {/* Page content */}
+            </Providers> 
+        </ThemeProvider>
       </body>
     </html>
   );
@@ -52,7 +52,7 @@ function NavLink({ href, label }: { href: string, label: string}) {
   const path = typeof window !== 'undefined' ? window.location.pathname : '';
   const isActive = path === href;
   return (
-    <Link href={href} className={`hover:underline ${isActive ? 'text-blue-400' : ''}`}>
+    <Link href={href} className={`px-1 py-2 hover:underline ${isActive ? 'text-blue-400' : ''}`}>
       {label}
     </Link>
   )
