@@ -3,6 +3,7 @@ import CounterCard from "@/components/CounterCard";
 import SearchBar from "@/components/SearchBar";
 import StatCard from '@/components/StatCard';
 import {stats} from "@/lib/stats";
+import InfoBanner from "@/components/InfoBanner";
 
 export default function DashboardPage() {
     return (
@@ -10,6 +11,10 @@ export default function DashboardPage() {
             <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
 
             <SearchBar />
+
+            <InfoBanner message="Welcome back!" />
+            <InfoBanner message="Update Complete!" type="success" />
+            <InfoBanner message="Error fetching stats." type="error" />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <OverviewCard title="Total Users" value="1,204" delta="+8%" />
@@ -28,7 +33,8 @@ export default function DashboardPage() {
                 <CounterCard label="New Signups" defaultValue={10} />
                 <CounterCard label="Errors Logged" defaultValue={1} />
             </div>
-
+            
+            
         </div>
     );
 }
