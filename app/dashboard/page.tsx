@@ -4,6 +4,7 @@ import SearchBar from "@/components/SearchBar";
 import StatCard from '@/components/StatCard';
 import {stats} from "@/lib/stats";
 import InfoBanner from "@/components/InfoBanner";
+import StatCardList from "@/components/StatCardList";
 
 export default function DashboardPage() {
     return (
@@ -27,6 +28,7 @@ export default function DashboardPage() {
                 {stats.map((stat, index) => (
                 <StatCard key={index} {...stat} />
                 ))}
+                <StatCardList />
             </div>
         
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
