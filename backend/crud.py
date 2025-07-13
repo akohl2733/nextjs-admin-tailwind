@@ -14,8 +14,8 @@ def create_metric(db: Session, metric: MetricCreate):
 
 def delete_metric(db: Session, metric_id: int):
     db_metric = db.query(Metric).filter(Metric.id == metric_id).first()
-    if db_metric:
-        db.delete(db_metric)
-        db.commit()
-        return True
-    return False
+    if not db_metric:
+        return None
+    db.delete(db_metric)
+    db.commit()
+    return db_metric

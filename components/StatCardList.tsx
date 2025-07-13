@@ -12,16 +12,26 @@ interface Stat {
 export default function StatCardList(){
     const [stats, setStats ] = useState<Stat[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch('/api/stats')
-            .then((res) => res.json())
+        fetch('http://localhost:8000/metrics')
+            .then((res) => {
+                if (!res.ok) throw new Error("Server error");
+                return res.json();
+            })
             .then((data) => {
-                setStats(data);
+                const transformedStats: Stat[] = data.map((metric: any) => ({
+                    title: metric.name,
+                    value: metric.value.toString(),
+                    change: "+0%"
+                }));
+                setStats(transformedStats);
                 setLoading(false);
             })
             .catch((err) => {
                 console.error('Failed to fetch stats:', err);
+                setError("Failed to load stats. Please try again later.");
                 setLoading(false);
             });
     }, []);
@@ -33,6 +43,20 @@ export default function StatCardList(){
                 <p className="ml-2">Loading stats...</p>
             </div>
         );
+    }
+
+    if (error) {
+        return (
+            <div className="text-center p-6 text-red-500">
+                {error}
+            </div>
+        )
+    }
+
+    if (stats.length === 0) {
+        <div className="text-center p-6 text-gray-500">
+            No Metrics Available
+        </div>
     }
 
     return (
